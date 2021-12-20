@@ -7,23 +7,32 @@
 
 import UIKit
 
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: UIViewController, UITableViewDataSource , UITableViewDelegate {
 
-    override func viewDidLoad() {
+static let share = FavoriteViewController()
+  var favorite = [FavoriteQuestions]()
+
+  @IBOutlet weak var table: UITableView!
+  override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    table.delegate = self
+    table.dataSource = self
     }
-    
 
-    /*
-    // MARK: - Navigation
+  @IBAction func updateData(_ sender: UIButton) {
+    table.reloadData()
+    print(FavoriteViewController.share.favorite)
+  }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return FavoriteViewController.share.favorite.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
+ // update()
+    cell.textLabel?.text = FavoriteViewController.share.favorite[indexPath.row].question
+    return cell
+  }
 
 }
