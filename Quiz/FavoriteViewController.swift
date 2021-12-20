@@ -21,7 +21,6 @@ static let share = FavoriteViewController()
 
   @IBAction func updateData(_ sender: UIButton) {
     table.reloadData()
-    print(FavoriteViewController.share.favorite)
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -30,9 +29,23 @@ static let share = FavoriteViewController()
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath)
- // update()
     cell.textLabel?.text = FavoriteViewController.share.favorite[indexPath.row].question
     return cell
+  }
+
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let action = UIContextualAction(style: .destructive, title: "delete") { action, view, complitionHandler in
+      let questionForDelete = FavoriteViewController.share.favorite[indexPath.row]
+      QuestionViewController.share.context.delete(questionForDelete)
+      do {
+        try  QuestionViewController.share.context.save()
+      } catch  {
+        print(error)
+      }
+      QuestionViewController.share.fetchFavoriteQ()
+    }
+    self.table.reloadData()
+    return UISwipeActionsConfiguration(actions: [action])
   }
 
 }

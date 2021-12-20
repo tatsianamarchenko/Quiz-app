@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import CoreData
 
 class QuestionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
 static let share = QuestionViewController()
   var array = [QuizElement]()
   var answers = [String]()
@@ -16,6 +18,8 @@ static let share = QuestionViewController()
 
   @IBOutlet weak var question: UILabel!
   @IBOutlet weak var table: UITableView!
+
+  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +37,6 @@ static let share = QuestionViewController()
         DispatchQueue.main.async { [self] in
           array = result
           question.text = array[0].question
-          /// print(array[0].question)
           print(array[0].answers)
           print(array[0].correctAnswers)
           // correct answers
@@ -69,12 +72,31 @@ static let share = QuestionViewController()
       }
     }
   }
-var favoriteque = ["ebedv", "sbv", "befdsdvz"]
+
   @IBAction func favoriteButton(_ sender: UIBarButtonItem) {
-    var quest = FavoriteQuestions(question:  array[0].question)
+    let quest = FavoriteQuestions(context: self.context)
+    quest.question = array[0].question
     FavoriteViewController.share.favorite.append(quest)
     print(FavoriteViewController.share.favorite)
+    do {
+      try self.context.save()
+    } catch {
+      print(error)
+    }
+    self.fetchFavoriteQ()
   }
+
+
+  func fetchFavoriteQ () {
+    do {
+      let request : NSFetchRequest<FavoriteQuestions> = FavoriteQuestions.fetchRequest()
+      FavoriteViewController.share.favorite = try context.fetch(request)
+    } catch  {
+      print(error)
+    }
+  }
+
+
   var errorArray = ["problems with network"]
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return answers.count
@@ -109,6 +131,6 @@ var favoriteque = ["ebedv", "sbv", "befdsdvz"]
 
 }
 
-struct FavoriteQuestions {
-  var question : String
-}
+///struct FavoriteQuestion {
+///  var question : String
+///}

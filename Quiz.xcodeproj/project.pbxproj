@@ -18,6 +18,8 @@
 		BFB941F927708AA10079D65A /* apiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB941F827708AA10079D65A /* apiManager.swift */; };
 		BFB941FB2770A6BB0079D65A /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB941FA2770A6BB0079D65A /* QuestionViewController.swift */; };
 		BFB941FD2770DF300079D65A /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB941FC2770DF2F0079D65A /* FavoriteViewController.swift */; };
+		BFB942002770F4FD0079D65A /* FavoriteQuestions+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB941FE2770F4FD0079D65A /* FavoriteQuestions+CoreDataClass.swift */; };
+		BFB942012770F4FD0079D65A /* FavoriteQuestions+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB941FF2770F4FD0079D65A /* FavoriteQuestions+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		BFB941F827708AA10079D65A /* apiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiManager.swift; sourceTree = "<group>"; };
 		BFB941FA2770A6BB0079D65A /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		BFB941FC2770DF2F0079D65A /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		BFB941FE2770F4FD0079D65A /* FavoriteQuestions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteQuestions+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BFB941FF2770F4FD0079D65A /* FavoriteQuestions+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteQuestions+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 		BF4A108D276FF03400D0F3C3 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				BFB941FE2770F4FD0079D65A /* FavoriteQuestions+CoreDataClass.swift */,
+				BFB941FF2770F4FD0079D65A /* FavoriteQuestions+CoreDataProperties.swift */,
 				BF4A108E276FF03400D0F3C3 /* AppDelegate.swift */,
 				BF4A1090276FF03400D0F3C3 /* SceneDelegate.swift */,
 				BF4A1092276FF03400D0F3C3 /* ViewController.swift */,
@@ -157,6 +163,8 @@
 				BF4A1093276FF03400D0F3C3 /* ViewController.swift in Sources */,
 				BFB941FB2770A6BB0079D65A /* QuestionViewController.swift in Sources */,
 				BF4A108F276FF03400D0F3C3 /* AppDelegate.swift in Sources */,
+				BFB942002770F4FD0079D65A /* FavoriteQuestions+CoreDataClass.swift in Sources */,
+				BFB942012770F4FD0079D65A /* FavoriteQuestions+CoreDataProperties.swift in Sources */,
 				BF4A1099276FF03400D0F3C3 /* Quiz.xcdatamodeld in Sources */,
 				BF4A10A8276FF85000D0F3C3 /* QuizModel.swift in Sources */,
 				BFB941FD2770DF300079D65A /* FavoriteViewController.swift in Sources */,
